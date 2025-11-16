@@ -1,0 +1,20 @@
+body {
+  background: #f8fafc;
+}
+.card { border-radius: 12px; }
+.container { max-width: 1100px; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1; /* Pushes footer to bottom */
+}
