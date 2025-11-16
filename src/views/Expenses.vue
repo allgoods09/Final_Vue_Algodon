@@ -49,8 +49,7 @@
           <div v-else class="alert alert-info">No expenses found.</div>
 
           <div class="mt-3">
-            <strong>Total: </strong>
-            {{ currencySymbol }}{{ totalAmount.toFixed(2) }}
+            <strong>Total: </strong>{{ currencySymbol }}{{ formattedTotal }}
             </div>
 
         </div>
@@ -72,6 +71,10 @@ const editingExpense = ref(null);
 
 const settings = JSON.parse(localStorage.getItem("settings")) || { currency: "PHP", showCents: true };
 const currencySymbol = computed(() => (settings.currency === "PHP" ? "₱" : "$"));
+
+const formattedTotal = computed(() => 
+  settings.showCents ? totalAmount.value.toFixed(2) : Math.round(totalAmount.value)
+);
 
 function formatCurrency(amount) {
   const symbol = settings.currency === "PHP" ? "₱" : "$";
